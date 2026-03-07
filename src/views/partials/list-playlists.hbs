@@ -1,8 +1,21 @@
+
+{{!-- adding a new heading for the users own observation spots --}}
+<h2 class="title is4"> Your Wildlife Observation Spots</h2>
 {{#each playlists}}
   <div class="box box-link-hover-shadow">
+
     <h2 class="title">
       {{title}}
     </h2>
+
+{{!-- Adding in fields so they are listed for the user --}}
+
+<p>{{description}}</p>
+
+<p> Category:{{category}}</p>
+
+<img src="{{image}}"  width="300">
+
     <a href="/playlist/{{_id}}" class="button">
       <span class="icon is-small">
         <i class="fas fa-folder-open"></i>

@@ -39,9 +39,11 @@ export const TrackArraySpec = Joi.array().items(TrackSpecPlus).label("TrackArray
 
 export const PlaylistSpec = Joi.object()
   .keys({
-    title: Joi.string().required().example("Beethoven Sonatas"),
+    title: Joi.string().required(),
     userid: IdSpec,
-    tracks: TrackArraySpec,
+    description: Joi.string().allow("").optional(),
+    image: Joi.string().allow("").optional(),
+    category: Joi.string().allow("").optional(),
   })
   .label("Playlist");
 
@@ -51,4 +53,3 @@ export const PlaylistSpecPlus = PlaylistSpec.keys({
 }).label("PlaylistPlus");
 
 export const PlaylistArraySpec = Joi.array().items(PlaylistSpecPlus).label("PlaylistArray");
-

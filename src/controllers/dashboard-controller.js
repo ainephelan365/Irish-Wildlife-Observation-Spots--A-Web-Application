@@ -28,6 +28,9 @@ export const dashboardController = {
       const newPlayList = {
         userid: loggedInUser._id,
         title: request.payload.title,
+        description: request.payload.description,
+        image: request.payload.image,
+        category: request.payload.category,
       };
       await db.playlistStore.addPlaylist(newPlayList);
       return h.redirect("/dashboard");
