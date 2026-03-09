@@ -6,10 +6,10 @@ export const playlistController = {
     handler: async function (request, h) {
       const playlist = await db.playlistStore.getPlaylistById(request.params.id);
       const viewData = {
-        title: "Playlist",
+        title: "Observation Spot",
         playlist: playlist,
       };
-      return h.view("playlist-view", viewData);
+      return h.view("spot-view", viewData);
     },
   },
 
@@ -18,7 +18,7 @@ export const playlistController = {
       payload: TrackSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("playlist-view", { title: "Add track error", errors: error.details }).takeover().code(400);
+        return h.view("spot-view", { title: "Add sighting error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
