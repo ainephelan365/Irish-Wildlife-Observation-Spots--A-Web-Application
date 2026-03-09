@@ -1,28 +1,43 @@
+<div class="columns is-multiline">
 
-{{!-- adding a new heading for the users own observation spots --}}
-<h2 class="title is4"> Your Wildlife Observation Spots</h2>
 {{#each playlists}}
-  <div class="box box-link-hover-shadow">
 
-    <h2 class="title">
-      {{title}}
-    </h2>
+<div class="column is-one-third">
 
-{{!-- Adding in fields so they are listed for the user --}}
+  <div class="card mb-5 has-background-grey-light">
 
-<p>{{description}}</p>
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="{{image}}" alt="Observation Spot Image">
+      </figure>
+    </div>
 
-<p> Category:{{category}}</p>
+    <div class="card-content">
 
-<img src="{{image}}"  width="300">
+      <p class="title is-4">
+        {{title}}
+      </p>
 
-    <a href="/playlist/{{_id}}" class="button">
-      <span class="icon is-small">
-        <i class="fas fa-folder-open"></i>
-      </span>
-    </a>
-    <a href="/dashboard/deleteplaylist/{{_id}}" class="button">
-      <i class="fas fa-trash"></i>
-    </a>
+      <p><strong>Description:</strong>{{description}}</p>
+
+      <p><strong>Category:</strong> {{category}}</p>
+
+      <br>
+
+      <a href="/playlist/{{_id}}" class="button is-link is-small">
+        View Sightings
+      </a>
+
+      <a href="/dashboard/deleteplaylist/{{_id}}" class="button is-danger is-small">
+        Delete
+      </a>
+
+    </div>
+
   </div>
+
+</div>
+
 {{/each}}
+
+</div>
