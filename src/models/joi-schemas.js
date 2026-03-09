@@ -16,7 +16,7 @@ export const UserSpec = UserCredentialsSpec.keys({
 
 export const UserSpecPlus = UserSpec.keys({
   _id: IdSpec,
-  __v: Joi.number(),
+  __v: Joi.string(),
 }).label("UserDetailsPlus");
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
@@ -25,7 +25,7 @@ export const TrackSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Piano Sonata No. 7"),
     artist: Joi.string().required().example("Beethoven"),
-    duration: Joi.number().allow("").optional().example(12),
+    duration: Joi.string().allow("").optional(),
     playlistid: IdSpec,
   })
   .label("Track");
@@ -49,7 +49,7 @@ export const PlaylistSpec = Joi.object()
 
 export const PlaylistSpecPlus = PlaylistSpec.keys({
   _id: IdSpec,
-  __v: Joi.number(),
+  __v: Joi.string(),
 }).label("PlaylistPlus");
 
 export const PlaylistArraySpec = Joi.array().items(PlaylistSpecPlus).label("PlaylistArray");

@@ -28,7 +28,7 @@ export const trackController = {
       const newTrack = {
         title: request.payload.title,
         artist: request.payload.artist,
-        duration: Number(request.payload.duration),
+        duration: request.payload.duration,
       };
       await db.trackStore.updateTrack(track, newTrack);
       return h.redirect(`/playlist/${request.params.id}`);
