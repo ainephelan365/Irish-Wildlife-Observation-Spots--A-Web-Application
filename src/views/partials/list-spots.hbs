@@ -1,43 +1,47 @@
-<div class="columns is-multiline">
+{{!-- Adding in bulma cards to restructure the dashboard page --}}
 
-{{#each playlists}}
+<div>
 
-<div class="column is-one-third">
+  {{#each spots}}
 
-  <div class="card mb-5 has-background-grey-light">
+  <div class="column is-one-third">
 
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="{{image}}" alt="Observation Spot Image">
-      </figure>
-    </div>
+    <div class="card mb-5 has-background-grey-light">
 
-    <div class="card-content">
+      <div>
+        <figure class="image is-4by3">
+          <img src="{{image}}" alt="Observation Spot Image">
+        </figure>
+      </div>
 
-      <p class="title is-4">
-        {{title}}
-      </p>
+      <div class="card-content">
 
-      <p><strong>Description:</strong>{{description}}</p>
+        <p class="title is-4">
+          {{title}}
+        </p>
 
-      <p><strong>Category:</strong> {{category}}</p>
+        <p>
+          <strong>Description:</strong>{{description}}
+        </p>
 
-      <br>
+        <p>
+          <strong>Category:</strong>{{category}}
+        </p>
 
-      <a href="/playlist/{{_id}}" class="button is-link is-small">
-        View Sightings
-      </a>
+        <br>
 
-      <a href="/dashboard/deleteplaylist/{{_id}}" class="button is-danger is-small">
-        Delete
-      </a>
+        <a href="/spot/{{_id}}" class="button is-link is-small">
+          View Sightings
+        </a>
 
-    </div>
+        <a href="/dashboard/deletespot/{{_id}}" class="button is-danger is-small">
+          Delete
+        </a>
 
-  </div>
+      </div>
+    </div>{{!-card content end --}}
+  </div>{{!-column is one third div --}}
 
-</div>
+  {{/each}}
 
-{{/each}}
-
-</div>
+</div> {{!-- multiline column Class closing div --}}

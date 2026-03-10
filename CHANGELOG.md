@@ -2,7 +2,7 @@
 
 ## version 0.9.0
 
-- complete user, playlist and track schemas
+- complete user, spot and sighting schemas
 - incorporate jwt components into project
 - include authenticate route
 - secure the api routes via jwt token
@@ -16,7 +16,7 @@
 
 ## version 0.7.0
 
-- introduce Playlist test interface
+- introduce spot test interface
 - refactor tests to use skeleton
 - incorporate nodemon to launch dev server
 
@@ -29,9 +29,9 @@
 
 ## version 0.5.0
 
-- develop mongo stores for user, playlist and track
+- develop mongo stores for user, spot and sighting
 - install mongoose component
-- introduce playlist store tests
+- introduce spot store tests
 - complete user mem store (fixing test failures)
 
 ## version 0.4.0
@@ -43,7 +43,7 @@
 
 ## version 0.3.0
 
-- support delete playlist + tracks
+- support delete spot + sightings
 - introduce .env for secrets
 - include Joi schema validation for signup form
 - incorporate JSON data stores
@@ -51,11 +51,11 @@
 ## version 0.2.0
 
 - about controller + view added
-- introduce track model
-- playlist controller + view & partials added
-- support adding trackApi to playlists
+- introduce sighting model
+- spot controller + view & partials added
+- support adding sightingApi to spots
 - introduce sessions
-- associate playlists with userApi
+- associate spots with userApi
 
 ## version 0.1.0
 
@@ -71,6 +71,6 @@
 - add eslint + prettier config
 -
 - vision and inert hapi components
-- simple in-memory playlist and user models
+- simple in-memory spot and user models
 - account controller + views & partials
-- playlist controller + views & partials
+- spot controller + views & partials

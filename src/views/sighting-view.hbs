@@ -1,20 +1,20 @@
 {{> menu}}
 
-<form class="box"  action="/track/{{playlist._id}}/updatetrack/{{track._id}}" method="POST">
-  <label>Update Track Details:</label>
+<form class="box"  action="/sighting/{{spot._id}}/updatesighting/{{sighting._id}}" method="POST">
+  <label>Update sighting Details:</label>
   <div class="field is-horizontal">
     <div class="field-body">
       <div class="field">
-        <input class="input" type="text" name="title", value="{{track.title}}">
+        <input class="input" type="text" name="title", value="{{sighting.title}}">
       </div>
       <div class="field">
-        <input class="input" type="text" name="artist" value="{{track.artist}}">
+        <input class="input" type="text" name="artist" value="{{sighting.artist}}">
       </div>
       <div class="field">
-        <input class="input" type="text"  name="duration" value="{{track.duration}}">
+        <input class="input" type="text"  name="duration" value="{{sighting.duration}}">
       </div>
     </div>
   </div>
-  <button class="button is-primary">Update Track</button>
+  <button class="button is-primary">Update sighting</button>
 </form>
 

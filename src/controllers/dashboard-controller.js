@@ -1,46 +1,46 @@
-import { PlaylistSpec } from "../models/joi-schemas.js";
+import { spotSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 
 export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const playlists = await db.playlistStore.getUserPlaylists(loggedInUser._id);
+      const spots = await db.spotStore.getUserSpots(loggedInUser._id);
       const viewData = {
-        title: "Playtime Dashboard",
+        title: "Wildlife Dashboard",
         user: loggedInUser,
-        playlists: playlists,
+        spots: spots,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
-  addPlaylist: {
+  addspot: {
     validate: {
-      payload: PlaylistSpec,
+      payload: spotSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("dashboard-view", { title: "Add Playlist error", errors: error.details }).takeover().code(400);
+        return h.view("dashboard-view", { title: "Add spot error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const newPlayList = {
+      const newSpot = {
         userid: loggedInUser._id,
         title: request.payload.title,
         description: request.payload.description,
         image: request.payload.image,
         category: request.payload.category,
       };
-      await db.playlistStore.addPlaylist(newPlayList);
+      await db.spotStore.addSpot(newSpot);
       return h.redirect("/dashboard");
     },
   },
 
-  deletePlaylist: {
+  deletespot: {
     handler: async function (request, h) {
-      const playlist = await db.playlistStore.getPlaylistById(request.params.id);
-      await db.playlistStore.deletePlaylistById(playlist._id);
+      const spot = await db.spotStore.getSpotById(request.params.id);
+      await db.spotStore.deleteSpotById(spot._id);
       return h.redirect("/dashboard");
     },
   },

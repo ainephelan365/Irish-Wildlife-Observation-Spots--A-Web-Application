@@ -21,23 +21,25 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
-export const TrackSpec = Joi.object()
+export const sightingSpec = Joi.object()
   .keys({
     title: Joi.string().required().example("Piano Sonata No. 7"),
     artist: Joi.string().required().example("Beethoven"),
     duration: Joi.string().allow("").optional(),
-    playlistid: IdSpec,
+    spotid: IdSpec,
   })
-  .label("Track");
+  .label("sighting");
 
-export const TrackSpecPlus = TrackSpec.keys({
-  _id: IdSpec,
-  __v: Joi.number(),
-}).label("TrackPlus");
+export const sightingSpecPlus = sightingSpec
+  .keys({
+    _id: IdSpec,
+    __v: Joi.number(),
+  })
+  .label("sightingPlus");
 
-export const TrackArraySpec = Joi.array().items(TrackSpecPlus).label("TrackArray");
+export const sightingArraySpec = Joi.array().items(sightingSpecPlus).label("sightingArray");
 
-export const PlaylistSpec = Joi.object()
+export const spotSpec = Joi.object()
   .keys({
     title: Joi.string().required(),
     userid: IdSpec,
@@ -45,11 +47,13 @@ export const PlaylistSpec = Joi.object()
     image: Joi.string().allow("").optional(),
     category: Joi.string().allow("").optional(),
   })
-  .label("Playlist");
+  .label("spot");
 
-export const PlaylistSpecPlus = PlaylistSpec.keys({
-  _id: IdSpec,
-  __v: Joi.string(),
-}).label("PlaylistPlus");
+export const spotSpecPlus = spotSpec
+  .keys({
+    _id: IdSpec,
+    __v: Joi.string(),
+  })
+  .label("spotPlus");
 
-export const PlaylistArraySpec = Joi.array().items(PlaylistSpecPlus).label("PlaylistArray");
+export const spotArraySpec = Joi.array().items(spotSpecPlus).label("spotArray");

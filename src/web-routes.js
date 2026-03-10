@@ -1,8 +1,8 @@
 import { aboutController } from "./controllers/about-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
-import { playlistController } from "./controllers/playlist-controller.js";
-import { trackController } from "./controllers/track-controller.js";
+import { spotController } from "./controllers/spot-controller.js";
+import { sightingController } from "./controllers/sighting-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -15,15 +15,15 @@ export const webRoutes = [
   { method: "GET", path: "/about", config: aboutController.index },
 
   { method: "GET", path: "/dashboard", config: dashboardController.index },
-  { method: "POST", path: "/dashboard/addplaylist", config: dashboardController.addPlaylist },
-  { method: "GET", path: "/dashboard/deleteplaylist/{id}", config: dashboardController.deletePlaylist },
+  { method: "POST", path: "/dashboard/addspot", config: dashboardController.addspot },
+  { method: "GET", path: "/dashboard/deletespot/{id}", config: dashboardController.deletespot },
 
-  { method: "GET", path: "/playlist/{id}", config: playlistController.index },
-  { method: "POST", path: "/playlist/{id}/addtrack", config: playlistController.addTrack },
-  { method: "GET", path: "/playlist/{id}/deletetrack/{trackid}", config: playlistController.deleteTrack },
+  { method: "GET", path: "/spot/{id}", config: spotController.index },
+  { method: "POST", path: "/spot/{id}/addsighting", config: spotController.addsighting },
+  { method: "GET", path: "/spot/{id}/deletesighting/{sightingid}", config: spotController.deletesighting },
 
-  { method: "GET", path: "/track/{id}/edittrack/{trackid}", config: trackController.index },
-  { method: "POST", path: "/track/{id}/updatetrack/{trackid}", config: trackController.update },
+  { method: "GET", path: "/sighting/{id}/editsighting/{sightingid}", config: sightingController.index },
+  { method: "POST", path: "/sighting/{id}/updatesighting/{sightingid}", config: sightingController.update },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
 ];
