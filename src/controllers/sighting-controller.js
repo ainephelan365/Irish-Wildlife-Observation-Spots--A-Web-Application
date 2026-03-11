@@ -7,7 +7,7 @@ export const sightingController = {
       const spot = await db.spotStore.getspotById(request.params.id);
       const sighting = await db.sightingStore.getsightingById(request.params.sightingid);
       const viewData = {
-        title: "Edit Song",
+        title: "Species",
         spot: spot,
         sighting: sighting,
       };
@@ -26,9 +26,9 @@ export const sightingController = {
     handler: async function (request, h) {
       const sighting = await db.sightingStore.getsightingById(request.params.sightingid);
       const newsighting = {
-        title: request.payload.title,
-        artist: request.payload.artist,
-        duration: request.payload.duration,
+        species: request.payload.title,
+        description: request.payload.artist,
+        season: request.payload.duration,
       };
       await db.sightingStore.updatesighting(sighting, newsighting);
       return h.redirect(`/spot/${request.params.id}`);

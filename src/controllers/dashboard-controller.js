@@ -30,6 +30,8 @@ export const dashboardController = {
         title: request.payload.title,
         description: request.payload.description,
         image: request.payload.image,
+        latitude: request.payload.latitude,
+        longitude: request.payload.longitude,
         category: request.payload.category,
       };
       await db.spotStore.addSpot(newSpot);

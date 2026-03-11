@@ -14,7 +14,7 @@ export const userMemStore = {
   },
 
   async getUserById(id) {
-    let user =  users.find((user) => user._id === id);
+    let user = users.find((user) => user._id === id);
     if (user == undefined) {
       user = null;
     }

@@ -4,7 +4,7 @@ import { db } from "../models/db.js";
 export const spotController = {
   index: {
     handler: async function (request, h) {
-      const spot = await db.spotStore.getspotById(request.params.id);
+      const spot = await db.spotStore.getSpotById(request.params.id);
       const viewData = {
         title: "Observation Spot",
         spot: spot,

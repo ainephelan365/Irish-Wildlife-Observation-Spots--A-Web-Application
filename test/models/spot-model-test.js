@@ -33,7 +33,7 @@ suite("spot Model tests", () => {
     assertSubset(mozart, spot);
   });
 
-  test("delete One Playist - success", async () => {
+  test("delete One Spot - success", async () => {
     const id = testspots[0]._id;
     await db.spotStore.deletespotById(id);
     const returnedspots = await db.spotStore.getAllspots();

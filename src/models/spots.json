@@ -1,3 +1,14 @@
 {
-  "spots": []
+  "spots": [
+    {
+      "userid": "024ef3f7-cea5-4f6f-8a7f-243f50566ed1",
+      "title": "Killarney National Park",
+      "description": "Public National park near the mountains and Muckross Lake in Co.Kerry.",
+      "image": "https://www.destinationkillarney.ie/wp-content/uploads/2017/09/Deers-Killarney-National-Park.jpg",
+      "latitude": 80,
+      "longitude": 90,
+      "category": "National Park.",
+      "_id": "b4a0e093-0c22-449c-b8f6-9e317121bf31"
+    }
+  ]
 }
