@@ -15,7 +15,7 @@ export const userMemStore = {
 
   async getUserById(id) {
     let user = users.find((user) => user._id === id);
-    if (user == undefined) {
+    if (user === undefined) {
       user = null;
     }
     return user;
@@ -23,7 +23,7 @@ export const userMemStore = {
 
   async getUserByEmail(email) {
     let user = users.find((user) => user.email === email);
-    if (user == undefined) {
+    if (user === undefined) {
       user = null;
     }
     return user;
@@ -31,7 +31,7 @@ export const userMemStore = {
 
   async deleteUserById(id) {
     const index = users.findIndex((user) => user._id === id);
-    if (index != -1) users.splice(index, 1);
+    if (index !== -1) users.splice(index, 1);
   },
 
   async deleteAll() {
