@@ -3,9 +3,9 @@ import Mongoose from "mongoose";
 const { Schema } = Mongoose;
 
 const sightingSchema = new Schema({
-  title: String,
-  artist: String,
-  duration: Number,
+  species: String,
+  description: String,
+  season: String,
   spotid: {
     type: Schema.Types.ObjectId,
     ref: "spot",

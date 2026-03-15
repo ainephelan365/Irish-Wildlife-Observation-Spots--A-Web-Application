@@ -23,10 +23,9 @@ export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
 export const sightingSpec = Joi.object()
   .keys({
-    title: Joi.string().required().example("Piano Sonata No. 7"),
-    artist: Joi.string().required().example("Beethoven"),
-    duration: Joi.string().allow("").optional(),
-    spotid: IdSpec,
+    species: Joi.string().required().example("Short Ear Owl"),
+    description: Joi.string().required().example("Only owls in ireland to hunt in the day time"),
+    season: Joi.string().required().example("Autumn"),
   })
   .label("sighting");
 

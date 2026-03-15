@@ -8,8 +8,8 @@
   <pclass="subtitle"> 
     <strong>Wildlife Sightings Page</strong>
   </p>
-  {{> list-sightings}}
-  {{> add-sighting}}
+  {{> list-sightings sightings=spot.sightings}}
+  {{> add-sighting spotId=spot._id}}
 
 
 </section>

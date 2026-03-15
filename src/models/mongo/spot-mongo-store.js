@@ -7,29 +7,29 @@ export const spotMongoStore = {
     return spots;
   },
 
-  async getspotById(id) {
+  async getSpotById(id) {
     if (id) {
-      const spot = await spot.findOne({ _id: id }).lean();
-      if (spot) {
-        spot.sightings = await sightingMongoStore.getsightingsByspotId(spot._id);
+      const spotObject = await spot.findOne({ _id: id }).lean();
+      if (spotObject) {
+        spotObject.sightings = await sightingMongoStore.getSightingsBySpotId(spotObject._id);
       }
-      return spot;
+      return spotObject;
     }
     return null;
   },
 
-  async addspot(spot) {
-    const newspot = new spot(spot);
-    const spotObj = await newspot.save();
-    return this.getspotById(spotObj._id);
+  async addSpot(spotData) {
+    const newSpot = new spot(spotData);
+    const spotObj = await newSpot.save();
+    return this.getSpotById(spotObj._id);
   },
 
-  async getUserspots(id) {
-    const spot = await spot.find({ userid: id }).lean();
-    return spot;
+  async getUserSpots(userid) {
+    const spots = await spot.find({ userid: userid }).lean();
+    return spots;
   },
 
-  async deletespotById(id) {
+  async deleteSpotById(id) {
     try {
       await spot.deleteOne({ _id: id });
     } catch (error) {

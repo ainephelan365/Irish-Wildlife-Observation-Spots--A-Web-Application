@@ -4,6 +4,7 @@ import { db } from "../models/db.js";
 export const spotController = {
   index: {
     handler: async function (request, h) {
+      console.log("PAYLOAD:", request.payload);
       const spot = await db.spotStore.getSpotById(request.params.id);
       const viewData = {
         title: "Observation Spot",
@@ -16,19 +17,20 @@ export const spotController = {
   addsighting: {
     validate: {
       payload: sightingSpec,
-      options: { abortEarly: false },
-      failAction: function (request, h, error) {
-        return h.view("spot-view", { title: "Add sighting error", errors: error.details }).takeover().code(400);
+      options: { abortEarly: false, stripUnknown: true },
+      failAction: async function (request, h, error) {
+        const spot = await db.spotStore.getSpotById(request.params.id);
+        return h.view("spot-view", { title: "Add sighting error", spot: spot, errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
-      const spot = await db.spotStore.getspotById(request.params.id);
+      const spot = await db.spotStore.getSpotById(request.params.id);
       const newsighting = {
-        title: request.payload.title,
-        artist: request.payload.artist,
-        duration: request.payload.duration,
+        species: request.payload.species,
+        description: request.payload.description,
+        season: request.payload.season,
       };
-      await db.sightingStore.addsighting(spot._id, newsighting);
+      await db.sightingStore.addSighting(spot.id, newsighting);
       return h.redirect(`/spot/${spot._id}`);
     },
   },

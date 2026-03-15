@@ -39,10 +39,14 @@ export const dashboardController = {
     },
   },
 
+  // Adjusting delete spot function so it doesnt get a blank template error
   deletespot: {
     handler: async function (request, h) {
       const spot = await db.spotStore.getSpotById(request.params.id);
-      await db.spotStore.deleteSpotById(spot._id);
+
+      if (spot) {
+        await db.spotStore.deleteSpotById(spot._id);
+      }
       return h.redirect("/dashboard");
     },
   },

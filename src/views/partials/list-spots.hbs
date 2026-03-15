@@ -3,7 +3,7 @@
 <div>
 
   {{#each spots}}
-
+    {{#if title}}
   <div class="column is-one-third">
 
     <div class="card mb-5 has-background-grey-light">
@@ -50,6 +50,7 @@
     </div>{{!-card content end --}}
   </div>{{!-column is one third div --}}
 
+  {{/if}}
   {{/each}}
 
 </div> {{!-- multiline column Class closing div --}}

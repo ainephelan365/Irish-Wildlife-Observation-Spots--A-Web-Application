@@ -7,22 +7,17 @@ export const sightingMongoStore = {
     return sightings;
   },
 
-  async addsighting(spotId, sighting) {
+  async addSighting(spotId, sightingData) {
     sighting.spotid = spotId;
-    const newsighting = new sighting(sighting);
-    const sightingObj = await newsighting.save();
-    return this.getsightingById(sightingObj._id);
+    const newSighting = new sighting(sightingData);
+    const sightingObj = await newSighting.save();
+    return sightingObj;
   },
 
-  async getsightingsByspotId(id) {
-    const sightings = await sighting.find({ spotid: id }).lean();
-    return sightings;
-  },
-
-  async getsightingById(id) {
+  async getSightingsBySpotId(id) {
     if (id) {
-      const sighting = await sighting.findOne({ _id: id }).lean();
-      return sighting;
+      const sightings = await sighting.find({ spotid: id }).lean();
+      return sightings;
     }
     return null;
   },
@@ -41,9 +36,9 @@ export const sightingMongoStore = {
 
   async updatesighting(sighting, updatedsighting) {
     const sightingDoc = await sighting.findOne({ _id: sighting._id });
-    sightingDoc.title = updatedsighting.title;
-    sightingDoc.artist = updatedsighting.artist;
-    sightingDoc.duration = updatedsighting.duration;
+    sightingDoc.species = updatedsighting.species;
+    sightingDoc.description = updatedsighting.description;
+    sightingDoc.season = updatedsighting.season;
     await sightingDoc.save();
   },
 };

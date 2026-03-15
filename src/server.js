@@ -34,6 +34,13 @@ const swaggerOptions = {
 async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
+    routes: {
+      payload: {
+        parse: true,
+        output: "data",
+        allow: "application/x-www-form-urlencoded",
+      },
+    },
   });
 
   await server.register(Cookie);
@@ -78,7 +85,7 @@ async function init() {
   });
   server.auth.default("session");
 
-  db.init("json");
+  db.init("mongo");
 
   server.route(webRoutes);
   server.route(apiRoutes);

@@ -26,9 +26,9 @@ export const sightingController = {
     handler: async function (request, h) {
       const sighting = await db.sightingStore.getsightingById(request.params.sightingid);
       const newsighting = {
-        species: request.payload.title,
-        description: request.payload.artist,
-        season: request.payload.duration,
+        species: request.payload.species,
+        description: request.payload.description,
+        season: request.payload.season,
       };
       await db.sightingStore.updatesighting(sighting, newsighting);
       return h.redirect(`/spot/${request.params.id}`);
