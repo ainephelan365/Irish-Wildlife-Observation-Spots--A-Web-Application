@@ -1,6 +1,6 @@
 import { EventEmitter } from "events";
 import { assert } from "chai";
-import { wildlifeService } from "./playtime-service.js";
+import { wildlifeService } from "./wildlife-service.js";
 import { assertSubset } from "../test-utils.js";
 import { maggie, seaSpot, testSpots } from "../fixtures.js";
 

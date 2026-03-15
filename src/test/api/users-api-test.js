@@ -2,7 +2,7 @@ import { assert } from "chai";
 import { assertSubset } from "../test-utils.js";
 import { wildlifeService } from "./wildlife-service.js";
 import { maggie, testUsers } from "../fixtures.js";
-import { db } from "../../src/models/db.js";
+import { db } from "../../models/db.js";
 
 const users = new Array(testUsers.length);
 
