@@ -18,15 +18,11 @@ import { apiRoutes } from "./api-routes.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const result = dotenv.config();
-if (result.error) {
-  console.log(result.error.message);
-  process.exit(1);
-}
+dotenv.config();
 
 const swaggerOptions = {
   info: {
-    title: "Playtime API",
+    title: "Wildlife API",
     version: "0.1",
   },
 };
@@ -38,7 +34,7 @@ async function init() {
       payload: {
         parse: true,
         output: "data",
-        allow: "application/x-www-form-urlencoded",
+        allow: ["application/json", "application/x-www-form-urlencoded"],
       },
     },
   });
