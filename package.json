@@ -9,7 +9,7 @@
     "dev": "./node_modules/.bin/nodemon src/server.js --ignore 'src/models/json/*.json'",
     "lint": "./node_modules/.bin/eslint . --ext .js",
     "test": "mocha \"src/test/**/*.js\" --ui tdd --exit",
-    "coverage": "nyc mocha src/test/**/*.js --ui tdd --exit",
+    "coverage": "c8 mocha src/test/**/*.js --ui tdd --exit",
     "testmodels": "./node_modules/mocha/bin/_mocha --ui tdd test/models/**/*.js -exit",
     "testapi": "./node_modules/mocha/bin/_mocha --ui tdd test/api/**/*.js -exit"
   },
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "axios": "^1.13.1",
+    "c8": "^11.0.0",
     "chai": "^6.2.0",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -46,5 +47,13 @@
     "nodemon": "^3.1.10",
     "nyc": "^18.0.0",
     "prettier": "^3.6.2"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/test/**/*.js"
+    ]
   }
 }
