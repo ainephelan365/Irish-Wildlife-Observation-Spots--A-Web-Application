@@ -30,6 +30,10 @@ export const testUsers = [
 
 export const seaSpot = {
   title: "Tramore Sea Strand",
+  description: "Popular seaside coastal area",
+  latitude: 40.22,
+  longitude: -7.15,
+  category: "Seaside",
 };
 
 export const birdSighting = {
@@ -40,17 +44,34 @@ export const birdSighting = {
 
 export const woodSpot = {
   title: "Kennedy Park",
+  description: "Popular woodland arboretum",
+  latitude: 67.8,
+  longitude: -14.67,
+  category: "Forest",
 };
 
 export const testSpots = [
   {
     title: "Killarney National Park",
+    description: "Popular national park",
+    latitude: 35.09,
+    longitude: -23.85,
+    category: "National Park",
   },
+
   {
     title: "Rogerstown Quay",
+    description: "Local boatside pier",
+    latitude: 21.22,
+    longitude: -9.23,
+    category: "Seaside",
   },
   {
     title: "Fota Wildlife Park",
+    description: "Wildlife animal park with exotic animals",
+    latitude: 99.99,
+    longitude: -45.15,
+    category: "Zoo",
   },
 ];
 

@@ -79,9 +79,18 @@ export const wildlifeService = {
   },
 
   async authenticate(user) {
-    const response = await axios.post(`${this.wildlifeUrl}/api/users/authenticate`, user);
-    axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
-    return response.data;
+    try {
+      const response = await axios.post(`${this.wildlifeUrl}/api/users/authenticate`, user);
+
+      console.log(response.data);
+
+      axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+
+      return response.data;
+    } catch (error) {
+      console.log(error.response.data);
+      throw error;
+    }
   },
 
   async clearAuth() {

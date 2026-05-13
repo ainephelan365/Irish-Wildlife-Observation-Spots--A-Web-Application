@@ -10,7 +10,7 @@ export const spotApi = {
     },
     handler: async function (request, h) {
       try {
-        const spots = await db.spotStore.getAllspots();
+        const spots = await db.spotStore.getAllSpots();
         return spots;
       } catch (err) {
         return Boom.serverUnavailable("Database Error");
@@ -28,7 +28,7 @@ export const spotApi = {
     },
     async handler(request) {
       try {
-        const spot = await db.spotStore.getspotById(request.params.id);
+        const spot = await db.spotStore.getSpotById(request.params.id);
         if (!spot) {
           return Boom.notFound("No spot with this id");
         }
@@ -51,12 +51,13 @@ export const spotApi = {
     handler: async function (request, h) {
       try {
         const spot = request.payload;
-        const newspot = await db.spotStore.addspot(spot);
+        const newspot = await db.spotStore.addSpot(spot);
         if (newspot) {
           return h.response(newspot).code(201);
         }
         return Boom.badImplementation("error creating spot");
       } catch (err) {
+        console.log(err);
         return Boom.serverUnavailable("Database Error");
       }
     },
@@ -73,11 +74,11 @@ export const spotApi = {
     },
     handler: async function (request, h) {
       try {
-        const spot = await db.spotStore.getspotById(request.params.id);
+        const spot = await db.spotStore.getSpotById(request.params.id);
         if (!spot) {
           return Boom.notFound("No spot with this id");
         }
-        await db.spotStore.deletespotById(spot._id);
+        await db.spotStore.deleteSpotById(spot._id);
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("No spot with this id");
@@ -94,7 +95,7 @@ export const spotApi = {
     },
     handler: async function (request, h) {
       try {
-        await db.spotStore.deleteAllspots();
+        await db.spotStore.deleteAllSpots();
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("Database Error");

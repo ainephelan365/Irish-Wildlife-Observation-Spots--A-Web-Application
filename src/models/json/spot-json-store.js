@@ -36,4 +36,10 @@ export const spotJsonStore = {
       await db.write();
     }
   },
+
+  async deleteAllSpots() {
+    await db.read();
+    db.data.spots = [];
+    await db.write();
+  },
 };

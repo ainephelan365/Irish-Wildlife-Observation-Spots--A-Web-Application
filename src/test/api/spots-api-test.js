@@ -7,14 +7,18 @@ import { maggie, seaSpot, testSpots } from "../fixtures.js";
 suite("spot API tests", () => {
   let user = null;
 
-  setup(async () => {
-    wildlifeService.clearAuth();
-    user = await wildlifeService.createUser(maggie);
+  suiteSetup(async () => {
+    try {
+      user = await wildlifeService.createUser(maggie);
+    } catch (e) {
+      // the user might already have been created
+      await wildlifeService.authenticate(maggie);
+      user = await wildlifeService.getUser(maggie._id);
+    }
+
     await wildlifeService.authenticate(maggie);
     await wildlifeService.deleteAllSpots();
-    await wildlifeService.deleteAllUsers();
-    user = await wildlifeService.createUser(maggie);
-    await wildlifeService.authenticate(maggie);
+
     seaSpot.userid = user._id;
   });
 
@@ -39,6 +43,8 @@ suite("spot API tests", () => {
   });
 
   test("create multiple spots", async () => {
+    await wildlifeService.deleteAllSpots();
+
     for (let i = 0; i < testSpots.length; i += 1) {
       testSpots[i].userid = user._id;
       // eslint-disable-next-line no-await-in-loop

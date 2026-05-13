@@ -27,7 +27,7 @@ const swaggerOptions = {
   },
 };
 
-async function init() {
+export async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
     routes: {
@@ -81,7 +81,7 @@ async function init() {
   });
   server.auth.default("session");
 
-  db.init("mongo");
+  await db.init("mongo");
 
   server.route(webRoutes);
   server.route(apiRoutes);
@@ -94,4 +94,4 @@ process.on("unhandledRejection", (err) => {
   process.exit(1);
 });
 
-init();
+await init();

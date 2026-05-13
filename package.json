@@ -9,17 +9,16 @@
     "dev": "./node_modules/.bin/nodemon src/server.js --ignore 'src/models/json/*.json'",
     "lint": "./node_modules/.bin/eslint . --ext .js",
     "test": "mocha \"src/test/**/*.js\" --ui tdd --exit",
+    "coverage": "nyc mocha src/test/**/*.js --ui tdd --exit",
     "testmodels": "./node_modules/mocha/bin/_mocha --ui tdd test/models/**/*.js -exit",
     "testapi": "./node_modules/mocha/bin/_mocha --ui tdd test/api/**/*.js -exit"
   },
-  
   "keywords": [
     "node",
     "hapi"
   ],
   "author": "Áine Phelan",
   "license": "ISC",
-
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@hapi/cookie": "^12.0.1",
@@ -45,6 +44,7 @@
     "eslint-plugin-import": "^2.32.0",
     "mocha": "^11.7.4",
     "nodemon": "^3.1.10",
+    "nyc": "^18.0.0",
     "prettier": "^3.6.2"
   }
 }

@@ -2,7 +2,7 @@ import { spot } from "./spot.js";
 import { sightingMongoStore } from "./sighting-mongo-store.js";
 
 export const spotMongoStore = {
-  async getAllspots() {
+  async getAllSpots() {
     const spots = await spot.find().lean();
     return spots;
   },
@@ -20,8 +20,8 @@ export const spotMongoStore = {
 
   async addSpot(spotData) {
     const newSpot = new spot(spotData);
-    const spotObj = await newSpot.save();
-    return this.getSpotById(spotObj._id);
+    const spotObject = await newSpot.save();
+    return this.getSpotById(spotObject._id);
   },
 
   async getUserSpots(userid) {
@@ -37,7 +37,7 @@ export const spotMongoStore = {
     }
   },
 
-  async deleteAllspots() {
+  async deleteAllSpots() {
     await spot.deleteMany({});
   },
 };

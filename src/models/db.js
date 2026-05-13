@@ -16,7 +16,7 @@ export const db = {
   spotStore: null,
   sightingStore: null,
 
-  init(storeType) {
+  async init(storeType) {
     switch (storeType) {
       case "json":
         this.userStore = userJsonStore;
@@ -27,7 +27,7 @@ export const db = {
         this.userStore = userMongoStore;
         this.spotStore = spotMongoStore;
         this.sightingStore = sightingMongoStore;
-        connectMongo();
+        await connectMongo();
         break;
       default:
         this.userStore = userMemStore;

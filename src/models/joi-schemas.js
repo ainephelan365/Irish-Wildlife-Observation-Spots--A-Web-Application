@@ -16,7 +16,7 @@ export const UserSpec = UserCredentialsSpec.keys({
 
 export const UserSpecPlus = UserSpec.keys({
   _id: IdSpec,
-  __v: Joi.string(),
+  __v: Joi.number(),
 }).label("UserDetailsPlus");
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
@@ -53,7 +53,8 @@ export const spotSpec = Joi.object()
 export const spotSpecPlus = spotSpec
   .keys({
     _id: IdSpec,
-    __v: Joi.string(),
+    __v: Joi.number(),
+    sightings: sightingArraySpec,
   })
   .label("spotPlus");
 
