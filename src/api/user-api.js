@@ -1,4 +1,5 @@
 import Boom from "@hapi/boom";
+import { User } from "../models/mongo/user.js";
 import { db } from "../models/db.js";
 import { UserSpec, UserSpecPlus, IdSpec, UserArray } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
@@ -89,9 +90,15 @@ export const userApi = {
         if (!user) {
           return Boom.unauthorized("User not found");
         }
-        if (user.password !== request.payload.password) {
+
+        const mongoUser = await User.findById(user._id);
+
+        try {
+          await mongoUser.comparePassword(request.payload.password);
+        } catch (error) {
           return Boom.unauthorized("Invalid password");
         }
+
         const token = createToken(user);
         return h.response({ success: true, token: token }).code(201);
       } catch (err) {

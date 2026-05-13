@@ -1,5 +1,6 @@
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { User } from "../models/mongo/user.js";
 
 export const accountsController = {
   index: {
@@ -44,12 +45,22 @@ export const accountsController = {
         return h.view("login-view", { title: "Log in error", errors: error.details }).takeover().code(400);
       },
     },
+
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
-      if (!user || user.password !== password) {
+
+      if (!user) {
         return h.redirect("/");
       }
+
+      try {
+        const mongoUser = await User.findById(user._id);
+        await mongoUser.comparePassword(password);
+      } catch (error) {
+        return h.redirect("/");
+      }
+
       request.cookieAuth.set({ id: user._id });
       return h.redirect("/dashboard");
     },

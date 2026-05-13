@@ -23,12 +23,15 @@ suite("User API tests", () => {
 
   test("create a user", async () => {
     const newUser = await wildlifeService.createUser(maggie);
-    assertSubset(maggie, newUser);
+
+    assert.equal(newUser.email, maggie.email);
+    assert.notEqual(newUser.password, maggie.password);
     assert.isDefined(newUser._id);
   });
 
   test("delete all user", async () => {
     let returnedUsers = await wildlifeService.getAllUsers();
+
     assert.equal(returnedUsers.length, 4);
     await wildlifeService.deleteAllUsers();
     await wildlifeService.createUser(maggie);
