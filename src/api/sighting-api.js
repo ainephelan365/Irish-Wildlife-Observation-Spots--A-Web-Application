@@ -2,6 +2,7 @@ import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
 import { IdSpec, sightingSpec, sightingSpecPlus, sightingArraySpec } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
+import { sanitizeInput } from "../utils/sanitize.js";
 
 export const sightingApi = {
   find: {
@@ -50,7 +51,15 @@ export const sightingApi = {
     },
     handler: async function (request, h) {
       try {
-        const sighting = await db.sightingStore.addsighting(request.params.id, request.payload);
+        // Adjusting script to sanitize user data
+
+        const sightingInfo = request.payload;
+
+        sightingInfo.description = sanitizeInput(sightingInfo.description);
+        sightingInfo.description = sanitizeInput(sightingInfo.notes);
+
+        const sighting = await db.sightingStore.addSighting(request.params.id, sightingInfo);
+
         if (sighting) {
           return h.response(sighting).code(201);
         }

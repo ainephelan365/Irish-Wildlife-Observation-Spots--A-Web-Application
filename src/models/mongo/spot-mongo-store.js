@@ -1,15 +1,15 @@
-import { spot } from "./spot.js";
+import { Spot } from "./spot.js";
 import { sightingMongoStore } from "./sighting-mongo-store.js";
 
 export const spotMongoStore = {
   async getAllSpots() {
-    const spots = await spot.find().lean();
+    const spots = await Spot.find().lean();
     return spots;
   },
 
   async getSpotById(id) {
     if (id) {
-      const spotObject = await spot.findOne({ _id: id }).lean();
+      const spotObject = await Spot.findOne({ _id: id }).lean();
       if (spotObject) {
         spotObject.sightings = await sightingMongoStore.getSightingsBySpotId(spotObject._id);
       }
@@ -19,25 +19,25 @@ export const spotMongoStore = {
   },
 
   async addSpot(spotData) {
-    const newSpot = new spot(spotData);
+    const newSpot = new Spot(spotData);
     const spotObject = await newSpot.save();
     return this.getSpotById(spotObject._id);
   },
 
   async getUserSpots(userid) {
-    const spots = await spot.find({ userid: userid }).lean();
+    const spots = await Spot.find({ userid: userid }).lean();
     return spots;
   },
 
   async deleteSpotById(id) {
     try {
-      await spot.deleteOne({ _id: id });
+      await Spot.deleteOne({ _id: id });
     } catch (error) {
       console.log("bad id");
     }
   },
 
   async deleteAllSpots() {
-    await spot.deleteMany({});
+    await Spot.deleteMany({});
   },
 };

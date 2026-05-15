@@ -1,22 +1,28 @@
-import { sighting } from "./sighting.js";
-import { spot } from "./spot.js";
+import Mongoose from "mongoose";
+import { Sighting } from "./sighting.js";
+import { Spot } from "./spot.js";
 
 export const sightingMongoStore = {
   async getAllsightings() {
-    const sightings = await sighting.find().lean();
+    const sightings = await Sighting.find().lean();
     return sightings;
   },
 
   async addSighting(spotId, sightingData) {
-    sighting.spotid = spotId;
-    const newSighting = new sighting(sightingData);
+    const newSighting = new Sighting({
+      species: sightingData.species,
+      description: sightingData.description,
+      season: sightingData.season,
+      spotid: spotId,
+    });
+
     const sightingObj = await newSighting.save();
     return sightingObj;
   },
 
   async getSightingsBySpotId(id) {
     if (id) {
-      const sightings = await sighting.find({ spotid: id }).lean();
+      const sightings = await Sighting.find({ spotid: id }).lean();
       return sightings;
     }
     return null;
@@ -24,18 +30,18 @@ export const sightingMongoStore = {
 
   async deletesighting(id) {
     try {
-      await sighting.deleteOne({ _id: id });
+      await Sighting.deleteOne({ _id: id });
     } catch (error) {
       console.log("bad id");
     }
   },
 
   async deleteAllsightings() {
-    await sighting.deleteMany({});
+    await Sighting.deleteMany({});
   },
 
   async updatesighting(sighting, updatedsighting) {
-    const sightingDoc = await sighting.findOne({ _id: sighting._id });
+    const sightingDoc = await Sighting.findOne({ _id: sighting._id });
     sightingDoc.species = updatedsighting.species;
     sightingDoc.description = updatedsighting.description;
     sightingDoc.season = updatedsighting.season;

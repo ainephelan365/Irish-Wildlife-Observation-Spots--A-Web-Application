@@ -8,8 +8,8 @@ const sightingSchema = new Schema({
   season: String,
   spotid: {
     type: Schema.Types.ObjectId,
-    ref: "spot",
+    ref: "Spot",
   },
 });
 
-export const sighting = Mongoose.model("sighting", sightingSchema);
+export const Sighting = Mongoose.model("Sighting", sightingSchema);

@@ -2,6 +2,7 @@ import Boom from "@hapi/boom";
 import { IdSpec, spotArraySpec, spotSpec, spotSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 import { validationError } from "./logger.js";
+import { sanitizeInput } from "../utils/sanitize.js";
 
 export const spotApi = {
   find: {
@@ -51,6 +52,11 @@ export const spotApi = {
     handler: async function (request, h) {
       try {
         const spot = request.payload;
+
+        // user input sanitization
+        spot.title = sanitizeInput(spot.title);
+        spot.description = sanitizeInput(spot.description);
+
         const newspot = await db.spotStore.addSpot(spot);
         if (newspot) {
           return h.response(newspot).code(201);

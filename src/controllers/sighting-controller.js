@@ -1,5 +1,6 @@
 import { sightingSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { sanitizeInput } from "../utils/sanitize.js";
 
 export const sightingController = {
   index: {
@@ -26,9 +27,9 @@ export const sightingController = {
     handler: async function (request, h) {
       const sighting = await db.sightingStore.getsightingById(request.params.sightingid);
       const newsighting = {
-        species: request.payload.species,
-        description: request.payload.description,
-        season: request.payload.season,
+        species: sanitizeInput(request.payload.species),
+        description: sanitizeInput(request.payload.description),
+        season: sanitizeInput(request.payload.season),
       };
       await db.sightingStore.updatesighting(sighting, newsighting);
       return h.redirect(`/spot/${request.params.id}`);
