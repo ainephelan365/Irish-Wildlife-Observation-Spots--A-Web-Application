@@ -5,6 +5,7 @@ import { sightingMemStore } from "./mem/sighting-mem-store.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { spotMongoStore } from "./mongo/spot-mongo-store.js";
 import { sightingMongoStore } from "./mongo/sighting-mongo-store.js";
+import { spotReviewMongoStore } from "./mongo/spot-review-mongo-store.js";
 import { connectMongo } from "./mongo/connect.js";
 
 import { userJsonStore } from "./json/user-json-store.js";
@@ -15,6 +16,7 @@ export const db = {
   userStore: null,
   spotStore: null,
   sightingStore: null,
+  reviewStore: null,
 
   async init(storeType) {
     switch (storeType) {
@@ -27,6 +29,7 @@ export const db = {
         this.userStore = userMongoStore;
         this.spotStore = spotMongoStore;
         this.sightingStore = sightingMongoStore;
+        this.reviewStore = spotReviewMongoStore;
         await connectMongo();
         break;
       default:

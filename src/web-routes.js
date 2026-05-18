@@ -20,6 +20,7 @@ export const webRoutes = [
 
   { method: "GET", path: "/spot/{id}", config: spotController.index },
   { method: "POST", path: "/spot/{id}/addsighting", config: spotController.addsighting },
+  { method: "POST", path: "/spot/{id}/addreview", config: spotController.addreview },
   { method: "GET", path: "/spot/{id}/deletesighting/{sightingid}", config: spotController.deletesighting },
 
   { method: "GET", path: "/sighting/{id}/editsighting/{sightingid}", config: sightingController.index },

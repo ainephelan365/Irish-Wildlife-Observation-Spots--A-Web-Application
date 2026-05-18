@@ -20,4 +20,4 @@ const spotReviewSchema = new Schema({
   },
 });
 
-export const Review = Moongoose.model("Review", spotReviewSchema);
+export const Review = Mongoose.model("Review", spotReviewSchema);

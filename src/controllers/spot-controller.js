@@ -41,6 +41,20 @@ export const spotController = {
     },
   },
 
+  addreview: {
+    handler: async function (request, h) {
+      const spot = await db.spotStore.getSpotById(request.params.id);
+      const newReview = {
+        title: sanitizeInput(request.payload.title),
+        comment: sanitizeInput(request.payload.comment),
+        category: sanitizeInput(request.payload.category),
+      };
+
+      await db.reviewStore.addReview(spot._id, newReview);
+      return h.redirect(`/spot/${spot._id}`);
+    },
+  },
+
   deletesighting: {
     handler: async function (request, h) {
       const spot = await db.spotStore.getSpotById(request.params.id);

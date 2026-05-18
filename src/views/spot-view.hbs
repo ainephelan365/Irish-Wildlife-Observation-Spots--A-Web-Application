@@ -5,13 +5,13 @@
     {{spot.title}}
   </div>
 
-  <pclass="subtitle"> 
-    <strong>Wildlife Sightings Page</strong>
-  </p>
+  <h2 class="title is-4"> Wildlife Sightings Page</h2>
   {{> list-sightings sightings=spot.sightings}}
   {{> add-sighting spotId=spot._id}}
 
-  {{> liste-reviews reviews=spot.reviews}}
+
+<h2 class="title is-4"> Wildlife Spot Reviews</h2>
+  {{> list-reviews reviews=spot.reviews}}
   {{> add-review spot=spot}}
 
 

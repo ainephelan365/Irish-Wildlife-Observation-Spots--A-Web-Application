@@ -1,0 +1,31 @@
+<form class="box" action="/spot/{{spot._id}}/addreview" method="POST">
+ <div class="field">
+      <label class="label">Add Spot Review</label>
+      <input class="input" type="text" placeholder="Review Title" name="title" required>
+    </div>
+
+    <div class="field">
+        <label class="label">Review Category</label>
+    
+
+        <div class="select">
+        <select name="category" required>
+            <option value="">Select Category below</option>
+             <option value="Positive">Positive</option>
+              <option value="Negative">Negative</option>
+               <option value="Photograpgy Points">Photography Points</option>
+                <option value="Facilities">Facilities</option>
+            </select>
+        </div>
+    </div>
+
+     <div class="field">
+      <textarea class="textarea" placeholder="Write your review here" name="comment" required></textarea>
+    </div>
+
+    <button class="button is-link">
+        Submit Review
+    </button>
+  </form>
+
+
