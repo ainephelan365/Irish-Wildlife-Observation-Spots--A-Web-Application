@@ -9,6 +9,8 @@ const spotSchema = new Schema({
   latitude: Number,
   longitude: Number,
   category: String,
+  // implementing visibility for private and public poi
+  visibility: String,
   userid: {
     type: Schema.Types.ObjectId,
     ref: "User",

@@ -47,6 +47,7 @@ export const spotSpec = Joi.object()
     latitude: Joi.number().min(-100).max(100).required(),
     longitude: Joi.number().min(-100).max(100).required(),
     category: Joi.string().allow("").optional(),
+    visibility: Joi.string().required(),
   })
   .label("spot");
 

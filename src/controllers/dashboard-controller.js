@@ -15,6 +15,20 @@ export const dashboardController = {
     },
   },
 
+  // Only public spots available on this page
+  explore: {
+    handler: async function (request, h) {
+      const spots = await db.spotStore.getPublicSpots();
+
+      const viewData = {
+        title: "Community Wildlife Spots Page",
+        spots: spots,
+      };
+
+      return h.view("explore-view", viewData);
+    },
+  },
+
   addspot: {
     validate: {
       payload: spotSpec,
@@ -33,6 +47,7 @@ export const dashboardController = {
         latitude: request.payload.latitude,
         longitude: request.payload.longitude,
         category: request.payload.category,
+        visibility: request.payload.visibility,
       };
       await db.spotStore.addSpot(newSpot);
       return h.redirect("/dashboard");

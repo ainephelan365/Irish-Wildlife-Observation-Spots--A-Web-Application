@@ -8,6 +8,16 @@ export const spotMongoStore = {
     return spots;
   },
 
+  // Public Wildlife Spots
+  async getPublicSpots() {
+    const spots = await Spot.find({
+      visibility: "public",
+    }).lean();
+
+    console.log(spots);
+    return spots;
+  },
+
   async getSpotById(id) {
     if (id) {
       const spotObject = await Spot.findOne({ _id: id }).lean();
