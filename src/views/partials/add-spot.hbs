@@ -2,35 +2,35 @@
   <form action="/dashboard/addspot" method="POST">
     <div class="field">
       <label class="label">Observation Spot Name</label>
-      <input class="input" type="text" placeholder="Enter the Observation Spot Name" name="title">
+      <input class="input" type="text" placeholder="Enter the Observation Spot Name" name="title" required>
     </div>
   
 
      <div class="field">
       <label class="label">Description</label>
-      <input class="input" type="text" placeholder="Please enter a small description for this certain observation spot" name="description">
+      <input class="input" type="text" placeholder="Please enter a small description for this certain observation spot" name="description" required>
     </div>
    
 
       <div class="field">
       <label class="label">Image URL</label>
-      <input class="input" type="text" placeholder="Please enclose a picture URL of the spot " name="image">
+      <input class="input" type="text" placeholder="Please enclose a picture URL of the spot " name="image" required>
     </div>
 
      <div class="field">
       <label class="label">Latitude</label>
-      <input class="input" type="number" placeholder="80.409" name="latitude">
+      <input class="input" type="number" placeholder="Latitude" name="latitude" min="-100" max="'100" step="any" required>
     </div>
 
      <div class="field">
       <label class="label">Longitude</label>
-      <input class="input" type="number" placeholder="70.509" name="longitude">
+      <input class="input" type="number" placeholder="Longitude" name="longitude" min="-100" max="100" step="any" required>
     </div>
    
 
      <div class="field">
       <label class="label">Spot Category</label>
-      <input class="input" type="text" placeholder="Wetland, forest, park etc" name="category">
+      <input class="input" type="text" placeholder="Wetland, forest, park etc" name="category" required>
     </div>
    
     <button class="button is-link">Add observation Spot</button>

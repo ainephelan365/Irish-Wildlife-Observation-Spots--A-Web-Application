@@ -1,5 +1,6 @@
 import { Spot } from "./spot.js";
 import { sightingMongoStore } from "./sighting-mongo-store.js";
+import { spotReviewMongoStore } from "./spot-review-mongo-store.js";
 
 export const spotMongoStore = {
   async getAllSpots() {
@@ -12,6 +13,7 @@ export const spotMongoStore = {
       const spotObject = await Spot.findOne({ _id: id }).lean();
       if (spotObject) {
         spotObject.sightings = await sightingMongoStore.getSightingsBySpotId(spotObject._id);
+        spotObject.reviews = await spotReviewMongoStore.getReviewsBySpotId(spotObject._id);
       }
       return spotObject;
     }

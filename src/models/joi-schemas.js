@@ -44,8 +44,8 @@ export const spotSpec = Joi.object()
     userid: IdSpec,
     description: Joi.string().allow("").optional(),
     image: Joi.string().allow("").optional(),
-    latitude: Joi.number().required(),
-    longitude: Joi.number().required(),
+    latitude: Joi.number().min(-100).max(100).required(),
+    longitude: Joi.number().min(-100).max(100).required(),
     category: Joi.string().allow("").optional(),
   })
   .label("spot");
