@@ -9,6 +9,13 @@ const spotReviewSchema = new Schema({
   comment: String,
   category: String,
   date: String,
+  // adding in rating
+  rating: {
+    type: Number,
+    max: 5,
+    min: 5,
+  },
+
   userid: {
     type: Schema.Types.ObjectId,
     ref: "User",

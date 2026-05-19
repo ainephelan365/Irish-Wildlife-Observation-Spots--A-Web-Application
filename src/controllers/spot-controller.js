@@ -48,6 +48,8 @@ export const spotController = {
         title: sanitizeInput(request.payload.title),
         comment: sanitizeInput(request.payload.comment),
         category: sanitizeInput(request.payload.category),
+        date: sanitizeInput(request.payload.date),
+        rating: Number(sanitizeInput(request.payload.rating)),
       };
 
       await db.reviewStore.addReview(spot._id, newReview);
