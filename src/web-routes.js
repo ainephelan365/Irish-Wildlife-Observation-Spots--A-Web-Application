@@ -17,6 +17,15 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addspot", config: dashboardController.addspot },
   { method: "GET", path: "/explore", config: dashboardController.explore },
+
+  // map route
+  {
+    method: "GET",
+    path: "/map",
+    handler: function (request, h) {
+      return h.view("spot-map");
+    },
+  },
   { method: "GET", path: "/dashboard/deletespot/{id}", config: dashboardController.deletespot },
 
   { method: "GET", path: "/spot/{id}", config: spotController.index },
