@@ -14,5 +14,20 @@
   {{> list-reviews reviews=spot.reviews}}
   {{> add-review spot=spot}}
 
+<button class="button is-info" onclick="shareWildSpot()">
+  Share Wildlife Spot with friends!
+</button>
+
+<script>
+function shareWildSpot()
+{
+  const spotLink = window.location.href;
+  window.prompt("Wildlife Spot Link:", spotLink);
+}
+</script>
 
 </section>
+
+
+
+
