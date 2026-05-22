@@ -1,5 +1,7 @@
 {{> menu}}
 
+
+<section class="section">
 <section class="section">
   <div class="title">
     {{spot.title}}
@@ -10,13 +12,23 @@
   {{> add-sighting spotId=spot._id}}
 
 
-<h2 class="title is-4"> Wildlife Spot Reviews</h2>
+  <h2 class="title is-4"> Wildlife Spot Reviews</h2>
   {{> list-reviews reviews=spot.reviews}}
   {{> add-review spot=spot}}
 
-<button class="button is-info" onclick="shareWildSpot()">
-  Share Wildlife Spot with friends!
-</button>
+  <button class="button is-info" onclick="shareWildSpot()">
+    Share Wildlife Spot with friends!
+  </button>
+  
+  <br>
+
+  <h2 class="title is-4">Wildlife Spot Gallery: Images from this spot</h2>
+
+  <div class="column">
+    {{> spot-image}}
+  </div>
+
+</section>
 
 <script>
 function shareWildSpot()
@@ -26,7 +38,7 @@ function shareWildSpot()
 }
 </script>
 
-</section>
+
 
 
 

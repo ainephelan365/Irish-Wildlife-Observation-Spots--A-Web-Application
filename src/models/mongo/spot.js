@@ -9,6 +9,7 @@ const spotSchema = new Schema({
   latitude: Number,
   longitude: Number,
   category: String,
+  img: String,
   // implementing visibility for private and public poi
   visibility: String,
   userid: {

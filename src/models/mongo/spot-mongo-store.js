@@ -36,6 +36,17 @@ export const spotMongoStore = {
     return this.getSpotById(spotObject._id);
   },
 
+  async updateSpot(updatedSpot) {
+    const spot = await Spot.findOne({
+      _id: updatedSpot._id,
+    });
+
+    spot.title = updatedSpot.title;
+    spot.img = updatedSpot.img;
+
+    await spot.save();
+  },
+
   async getUserSpots(userid) {
     const spots = await Spot.find({ userid: userid }).lean();
     return spots;

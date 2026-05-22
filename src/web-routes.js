@@ -18,6 +18,24 @@ export const webRoutes = [
   { method: "POST", path: "/dashboard/addspot", config: dashboardController.addspot },
   { method: "GET", path: "/explore", config: dashboardController.explore },
 
+  // cloudinary image route
+  {
+    method: "POST",
+    path: "/spot/{id}/uploadimage",
+
+    options: {
+      payload: {
+        multipart: true,
+        output: "data",
+        maxBytes: 209715200,
+        parse: true,
+        allow: "multipart/form-data",
+      },
+    },
+
+    handler: spotController.uploadImage.handler,
+  },
+
   // map route
   {
     method: "GET",

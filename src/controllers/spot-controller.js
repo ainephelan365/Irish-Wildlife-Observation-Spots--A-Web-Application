@@ -1,5 +1,6 @@
 import { sightingSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { imageStore } from "../models/image-store.js";
 import { sanitizeInput } from "../utils/sanitize.js";
 
 export const spotController = {
@@ -13,7 +14,8 @@ export const spotController = {
       };
 
       console.log(spot);
-      console.log(spot.sightings);
+      console.log(spot.img);
+
       return h.view("spot-view", viewData);
     },
   },
@@ -54,6 +56,24 @@ export const spotController = {
 
       await db.reviewStore.addReview(spot._id, newReview);
       return h.redirect(`/spot/${spot._id}`);
+    },
+  },
+
+  uploadImage: {
+    handler: async function (request, h) {
+      try {
+        const spot = await db.spotStore.getSpotById(request.params.id);
+        const file = request.payload.imagefile;
+        if (Object.keys(file).length > 0) {
+          const url = await imageStore.uploadImage(request.payload.imagefile);
+          spot.img = url;
+          await db.spotStore.updateSpot(spot);
+        }
+        return h.redirect(`/spot/${spot._id}`);
+      } catch (err) {
+        console.log(err);
+        return h.redirect(`/spot/${request.params.id}`);
+      }
     },
   },
 
