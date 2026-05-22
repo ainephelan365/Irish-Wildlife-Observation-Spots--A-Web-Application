@@ -49,7 +49,9 @@ export const webRoutes = [
   { method: "GET", path: "/spot/{id}", config: spotController.index },
   { method: "POST", path: "/spot/{id}/addsighting", config: spotController.addsighting },
   { method: "POST", path: "/spot/{id}/addreview", config: spotController.addreview },
+  { method: "GET", path: "/spot/{id}/deletereview/{reviewid}", config: spotController.deletereview },
   { method: "GET", path: "/spot/{id}/deletesighting/{sightingid}", config: spotController.deletesighting },
+  { method: "GET", path: "/spot/{id}/deleteimage", config: spotController.deleteImage },
 
   { method: "GET", path: "/sighting/{id}/editsighting/{sightingid}", config: sightingController.index },
   { method: "POST", path: "/sighting/{id}/updatesighting/{sightingid}", config: sightingController.update },

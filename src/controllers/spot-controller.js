@@ -59,6 +59,14 @@ export const spotController = {
     },
   },
 
+  deletereview: {
+    handler: async function (request, h) {
+      const spot = await db.spotStore.getSpotById(request.params.id);
+      await db.sightingStore.deleteReview(request.params.reviewid);
+      return h.redirect(`/spot/${spot._id}`);
+    },
+  },
+
   uploadImage: {
     handler: async function (request, h) {
       try {
@@ -74,6 +82,15 @@ export const spotController = {
         console.log(err);
         return h.redirect(`/spot/${request.params.id}`);
       }
+    },
+  },
+
+  deleteImage: {
+    handler: async function (request, h) {
+      const spot = await db.spotStore.getSpotById(request.params.id);
+      spot.img = "";
+      await db.spotStore.updateSpot(spot);
+      return h.redirect(`/spot/${spot._id}`);
     },
   },
 
