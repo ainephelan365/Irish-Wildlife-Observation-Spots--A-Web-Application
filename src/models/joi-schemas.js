@@ -43,7 +43,7 @@ export const spotSpec = Joi.object()
     title: Joi.string().required(),
     userid: IdSpec,
     description: Joi.string().allow("").optional(),
-    image: Joi.string().allow("").optional(),
+    img: Joi.string().allow("").optional(),
     latitude: Joi.number().min(-100).max(100).required(),
     longitude: Joi.number().min(-100).max(100).required(),
     category: Joi.string().allow("").optional(),

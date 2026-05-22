@@ -34,6 +34,7 @@ export const seaSpot = {
   latitude: 40.22,
   longitude: -7.15,
   category: "Seaside",
+  img: "",
 };
 
 export const birdSighting = {
@@ -48,6 +49,7 @@ export const woodSpot = {
   latitude: 67.8,
   longitude: -14.67,
   category: "Forest",
+  img: "",
 };
 
 export const testSpots = [
@@ -57,6 +59,7 @@ export const testSpots = [
     latitude: 35.09,
     longitude: -23.85,
     category: "National Park",
+    img: "",
   },
 
   {
@@ -65,6 +68,7 @@ export const testSpots = [
     latitude: 21.22,
     longitude: -9.23,
     category: "Seaside",
+    img: "",
   },
   {
     title: "Fota Wildlife Park",
@@ -72,6 +76,7 @@ export const testSpots = [
     latitude: 99.99,
     longitude: -45.15,
     category: "Zoo",
+    img: "",
   },
 ];
 

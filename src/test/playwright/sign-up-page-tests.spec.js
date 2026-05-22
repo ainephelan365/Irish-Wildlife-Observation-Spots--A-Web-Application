@@ -20,7 +20,7 @@ test("User sign up", async ({ page }) => {
     .getByRole("textbox", {
       name: "Enter email",
     })
-    .fill("bond007@gmail.com");
+    .fill("testbond007@gmail.com");
 
   await page
     .getByRole("textbox", {
@@ -30,7 +30,7 @@ test("User sign up", async ({ page }) => {
 
   await page
     .getByRole("button", {
-      name: "Enter first name",
+      name: "Submit",
     })
-    .fill("Submit");
+    .click();
 });
