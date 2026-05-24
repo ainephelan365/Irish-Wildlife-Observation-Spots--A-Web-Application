@@ -8,7 +8,7 @@
 
 #### _INTRODUCTION AND DESCRIPTION_
 
-This is an updated version of the Irish Wildlife Spots web application that I started and made for Assignment 1(Readme found below). For this assignment I decided to go with Option 1 which was continuing on with more of backend and test driven development. For my implementation, I mainly covered levels 1 and 2 of the rubric as well as attempting a couple of things for level 3. I fixed the majority of failing unit tests as well as adding features such as cloudinary and basic map implementation. As this was a self learning assignment, I found it very useful to explore and get familiar with new packages as well as finding what did and didn't work for my application.
+This is an updated version of the Irish Wildlife Spots web application that I started and made for Assignment 1(Readme found below). For this assignment I decided to go with Option 1 which was continuing on with more of backend and test driven development. For my implementation, I mainly covered levels 1 and 2 of the rubric as well as attempting a couple of things for level 3. I fixed the majority of failing unit tests as well as adding features such as cloudinary and basic map implementation. As this was a self learning assignment, I found it very useful to explore and get familiar with new packages as well as finding what did and didn't work for my application. I created a new branch off of the main Web Application repo named "assignment2-hapi" which is linked below.
 
 To summarize, I implemented the following that pushed on the functinality and features from Assignment 1;
 
