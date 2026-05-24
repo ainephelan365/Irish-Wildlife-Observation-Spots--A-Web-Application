@@ -43,7 +43,7 @@ export const dashboardController = {
         userid: loggedInUser._id,
         title: request.payload.title,
         description: request.payload.description,
-        image: request.payload.image,
+        image: request.payload.img,
         latitude: request.payload.latitude,
         longitude: request.payload.longitude,
         category: request.payload.category,
