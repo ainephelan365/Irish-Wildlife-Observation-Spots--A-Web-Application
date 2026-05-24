@@ -6,8 +6,8 @@
 
 # Test info
 
-- Name: src\test\playwright\map-share-button-test.spec.js >> Testing the basic Map feature, sharing spot button and
-- Location: src\test\playwright\map-share-button-test.spec.js:3:1
+- Name: src\test\playwright\map-share-button-test.spec.js >> Testing sharing site button
+- Location: src\test\playwright\map-share-button-test.spec.js:50:1
 
 # Error details
 
@@ -18,7 +18,7 @@ Test timeout of 30000ms exceeded.
 ```
 Error: locator.click: Test timeout of 30000ms exceeded.
 Call log:
-  - waiting for getByRole('link', { name: 'Country Map' })
+  - waiting for locator('text=Tory Hill')
 
 ```
 
@@ -83,8 +83,7 @@ Call log:
   30 |     .getByRole("link", {
   31 |       name: "Country Map",
   32 |     })
-> 33 |     .click();
-     |      ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  33 |     .click();
   34 | 
   35 |   await page
   36 |     .getByRole("button", {
@@ -128,7 +127,8 @@ Call log:
   74 | 
   75 |   // Manages alerting pop up window
   76 | 
-  77 |   await page.locator("text=Tory Hill").click();
+> 77 |   await page.locator("text=Tory Hill").click();
+     |                                        ^ Error: locator.click: Test timeout of 30000ms exceeded.
   78 | 
   79 |   page.once("dialog", async (dialog) => {
   80 |     expect(dialog.message()).toContain("Wildlife Spot Link:");

@@ -62,7 +62,7 @@ export const spotController = {
   deletereview: {
     handler: async function (request, h) {
       const spot = await db.spotStore.getSpotById(request.params.id);
-      await db.sightingStore.deleteReview(request.params.reviewid);
+      await db.reviewStore.deleteReview(request.params.reviewid);
       return h.redirect(`/spot/${spot._id}`);
     },
   },
